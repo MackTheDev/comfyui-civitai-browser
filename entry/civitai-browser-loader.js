@@ -4,7 +4,10 @@ import {api} from "../../scripts/api.js";
 app.registerExtension({
     name: 'civitai-browser',
     async setup() {
-        import(api.api_base + "/civitai-browser/main.js");
+        try {
+            await import(api.api_base + "/civitai-browser/main.js");
+        } catch (_) {
+        }
 
         try {
             // new style Manager buttons
@@ -26,7 +29,3 @@ app.registerExtension({
         }
     }
 });
-
-setTimeout(() => {
-    import(api.api_base + "/civitai-browser/main.js");
-}, 500);

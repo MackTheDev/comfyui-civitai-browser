@@ -50,4 +50,9 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [react(), rewriteImportPlugin({ isDev: mode === "development" })],
+  server: {
+    proxy: {
+      "/scripts": "http://127.0.0.1:8188",
+    },
+  },
 }));
